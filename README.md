@@ -44,7 +44,7 @@ GCloud is a Ruby on Rails application that provides secure, user-based file stor
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/gcloud.git
+   git clone https://github.com/Roughosing/gcloud.git
    cd gcloud
    ```
 
