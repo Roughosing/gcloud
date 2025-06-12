@@ -1,0 +1,14 @@
+<div class="flex items-center justify-center h-[75vh]">
+  <div class="w-full max-w-2xl p-8 bg-gray-50 rounded-lg">
+    <div class="text-center mb-4">
+      <h3 class="text-lg font-medium text-gray-900"><%= file_entry.name %></h3>
+    </div>
+    <audio controls class="w-full">
+      <source
+        src="<%= rails_blob_path(file_entry.file) %>"
+        type="<%= file_entry.content_type %>"
+      >
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+</div>

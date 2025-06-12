@@ -1,0 +1,17 @@
+<nav class="flex mb-4" aria-label="Breadcrumb">
+  <ol class="inline-flex items-center space-x-1 md:space-x-3">
+    <% if @folder != current_user.root_folder %>
+      <% path = breadcrumb_path(@folder) %>
+      <% path.each do |f| %>
+        <% if f == @folder %>
+          <span class="text-sm font-medium text-gray-900"><%= f.name %></span>
+        <% else %>
+          <%= link_to f.name,
+          folder_path(f),
+          class: "text-sm font-medium text-gray-600 hover:text-gray-900" %>
+          <span class="text-sm text-gray-600">/</span>
+        <% end %>
+      <% end %>
+    <% end %>
+  </ol>
+</nav>

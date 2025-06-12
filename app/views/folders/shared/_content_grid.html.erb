@@ -1,0 +1,9 @@
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+  <% folders.each do |folder| %>
+    <%= render "folders/folder", folder: folder %>
+  <% end %>
+
+  <% files.each do |file| %>
+    <%= render "file_entries/file_entry", file_entry: file %>
+  <% end %>
+</div>

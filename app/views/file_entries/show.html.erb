@@ -1,0 +1,28 @@
+<%= turbo_frame_tag "modal" do %>
+  <%= render "shared/modal", modal_width: "w-full max-w-4xl" do %>
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="text-2xl font-extrabold text-gray-900"><%= @file_entry.name %></h3>
+      <%= link_to "×", folder_path(@folder), class: "text-gray-500 hover:text-gray-700 text-2xl font-medium", data: { turbo_frame: "_top" } %>
+    </div>
+
+    <div class="preview-content">
+      <%= render partial: preview_partial_for(@file_entry),
+      locals: {
+        file_entry: @file_entry,
+      } %>
+    </div>
+
+    <div class="mt-4 text-sm font-medium text-gray-600">
+      <p>Size:
+        <%= number_to_human_size(@file_entry.size) %></p>
+      <p>Type:
+        <%= @file_entry.content_type %></p>
+    </div>
+
+    <% if defined?(footer) && footer.present? %>
+      <div class="mt-4 text-sm font-medium text-gray-600">
+        <%= footer %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

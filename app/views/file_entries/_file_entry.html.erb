@@ -1,0 +1,25 @@
+<div class="rounded-lg bg-white p-4 shadow-sm transition-shadow hover:shadow-md group relative" id="file-entry-<%= file_entry.id %>">
+  <%= link_to folder_file_entry_path(file_entry.folder, file_entry), data: { turbo_frame: "modal" }, class: "block" do %>
+    <div class="flex items-center space-x-3">
+      <%= heroicon(
+        icon_for(file_entry)[0],
+        variant: :solid,
+        options: {
+          class: "w-8 h-8 text-#{icon_for(file_entry)[1]}-500",
+        },
+      ) %>
+
+      <div>
+        <span class="text-sm font-medium text-gray-900"><%= file_entry.name.truncate(20) %></span>
+        <p class="text-sm font-medium text-gray-600"><%= number_to_human_size(file_entry.size) %></p>
+      </div>
+    </div>
+  <% end %>
+
+  <%= button_to folder_file_entry_path(file_entry.folder, file_entry), 
+      method: :delete,
+      class: "absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity",
+      form: { data: { turbo_confirm: "Are you sure you want to delete this file?" } } do %>
+    <%= heroicon("trash", variant: :outline, options: { class: "w-5 h-5 text-red-500" }) %>
+  <% end %>
+</div>

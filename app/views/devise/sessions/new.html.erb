@@ -1,0 +1,92 @@
+<div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-md w-full space-y-8 bg-white p-8 rounded-lg shadow-lg">
+    <div>
+      <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+        Sign in to your account
+      </h2>
+      <p class="mt-2 text-center text-sm text-gray-600">
+        Access your cloud storage
+      </p>
+    </div>
+
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "mt-8 space-y-6" }) do |f| %>
+      <div class="rounded-md space-y-4">
+        <%= f.input :email,
+                required: true,
+                autofocus: true,
+                input_html: {
+                  class:
+                    "appearance-none rounded-lg relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm",
+                  autocomplete: "email",
+                },
+                wrapper_html: {
+                  class: "rounded-md",
+                },
+                label_html: {
+                  class: "sr-only",
+                },
+                placeholder: "Email address" %>
+
+        <%= f.input :password,
+                required: true,
+                input_html: {
+                  class:
+                    "appearance-none rounded-lg relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm",
+                  autocomplete: "current-password",
+                },
+                wrapper_html: {
+                  class: "rounded-md",
+                },
+                label_html: {
+                  class: "sr-only",
+                },
+                placeholder: "Password" %>
+
+        <div class="flex items-center justify-between">
+          <div class="flex items-center">
+            <%= if devise_mapping.rememberable?
+              f.input :remember_me,
+                      as: :boolean,
+                      wrapper_html: {
+                        class: "flex items-center",
+                      },
+                      input_html: {
+                        class:
+                          "h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded",
+                      },
+                      label_html: {
+                        class: "ml-2 block text-sm text-gray-900",
+                      }
+            end %>
+          </div>
+
+          <%- if devise_mapping.recoverable? %>
+            <div class="text-sm">
+              <%= link_to "Forgot your password?",
+              new_password_path(resource_name),
+              class: "font-medium text-indigo-600 hover:text-indigo-500" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div>
+        <%= f.button :submit,
+                 "Sign in",
+                 class:
+                   "group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+      </div>
+    <% end %>
+
+    <div class="mt-6">
+      <%- if devise_mapping.registerable? %>
+        <p class="text-center text-sm">
+          Don't have an account?
+          <%= link_to "Sign up",
+          new_registration_path(resource_name),
+          class: "font-medium text-indigo-600 hover:text-indigo-500" %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+</div>

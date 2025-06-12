@@ -1,0 +1,5 @@
+<%= javascript_tag do %>
+  document.addEventListener("DOMContentLoaded", function() { const fileInput =
+  document.getElementById('file-upload'); fileInput.addEventListener('change',
+  function() { if (this.files.length > 0) { this.form.submit(); } }); });
+<% end %>

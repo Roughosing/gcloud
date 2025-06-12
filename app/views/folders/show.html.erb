@@ -1,0 +1,11 @@
+<div class="space-y-6">
+  <%= render "folders/shared/breadcrumb" %>
+  <div class="flex items-center justify-between">
+    <h1 class="text-3xl font-extrabold text-gray-900 whitespace-nowrap"><%= @folder.name %></h1>
+    <%= render "folders/shared/actions" %>
+  </div>
+
+  <%= render "folders/shared/content_grid", folders: @subfolders, files: @files %>
+</div>
+
+<%= render "shared/file_upload_js" %>

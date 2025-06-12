@@ -1,0 +1,4 @@
+---
+line_length: 120
+break_tags: false
+class_attribute_style: single_line 
