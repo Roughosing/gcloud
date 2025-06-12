@@ -1,6 +1,6 @@
 # GCloud - File Storage Application
 
-GCloud is a Ruby on Rails application that provides secure, user-based file storage and management capabilities. It allows users to organize files in folders, preview different file types, and manage their digital content efficiently. This was made purely out of fun and to help improve my Rails and System Design skills.
+GCloud (Greg's Cloud) is a Ruby on Rails application that provides secure, user-based file storage and management capabilities. It allows users to organize files in folders, preview different file types, and manage their digital content efficiently. This was made purely out of fun and to help improve my Rails and System Design skills.
 
 ## Technologies Used
 

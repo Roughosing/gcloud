@@ -4,33 +4,69 @@
 # belong in git's global ignore instead:
 # `$XDG_CONFIG_HOME/git/ignore` or `~/.config/git/ignore`
 
+# IDE files
 /.idea
+.vscode/
 
-# Ignore bundler config.
+# Ignore bundler config and gems
 /.bundle
+/vendor/bundle
 
-# Ignore all environment files.
+# Ignore all environment files
 /.env*
+.env.*
+.env.*.local
 
-# Ignore all logfiles and tempfiles.
+# Ignore all logfiles and tempfiles
 /log/*
 /tmp/*
 !/log/.keep
 !/tmp/.keep
 
-# Ignore pidfiles, but keep the directory.
+# Ignore pidfiles, but keep the directory
 /tmp/pids/*
 !/tmp/pids/
 !/tmp/pids/.keep
 
-# Ignore storage (uploaded files in development and any SQLite databases).
+# Ignore storage (uploaded files in development and any SQLite databases)
 /storage/*
 !/storage/.keep
 /tmp/storage/*
 !/tmp/storage/
 !/tmp/storage/.keep
 
+# Ignore asset pipeline files
 /public/assets
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
 
-# Ignore master key for decrypting credentials and more.
+# Ignore master key for decrypting credentials and more
 /config/master.key
+
+# Ignore test coverage
+/coverage
+
+# Ignore system files
+.DS_Store
+*.swp
+*~
+.byebug_history
+
+# Ignore Ruby bytecode files
+*.rbc
+
+# Ignore database backups
+*.dump
+*.sql
+*.sqlite3
+
+# Ignore compiled assets
+/public/system
+/public/uploads
+
+# Ignore yarn and npm files
+yarn-debug.log*
+.yarn-integrity
+npm-debug.log*

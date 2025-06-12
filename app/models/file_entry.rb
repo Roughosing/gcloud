@@ -4,10 +4,7 @@ class FileEntry < ApplicationRecord
 
   has_one_attached :file
 
-  validates :name, presence: true
-  validates :file, presence: true
-  validates :folder, presence: true
-  validates :user, presence: true
+  validates :name, :file, :folder, :user, presence: true
 
   before_validation :set_metadata, on: :create, if: -> { file.attached? }
   before_validation :set_user, on: :create, if: -> { folder.present? && folder.user.present? }
