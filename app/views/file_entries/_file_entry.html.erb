@@ -22,4 +22,10 @@
       form: { data: { turbo_confirm: "Are you sure you want to delete this file?" } } do %>
     <%= heroicon("trash", variant: :outline, options: { class: "w-5 h-5 text-red-500" }) %>
   <% end %>
+
+  <%= button_to download_folder_file_entry_path(file_entry.folder, file_entry), 
+      method: :get,
+      class: "absolute top-12 right-2 opacity-0 group-hover:opacity-100 transition-opacity" do %>
+    <%= heroicon("arrow-down-tray", variant: :outline, options: { class: "w-5 h-5 text-blue-500" }) %>
+  <% end %>
 </div>
