@@ -123,4 +123,69 @@ RSpec.describe FileEntriesController, type: :controller do
       end
     end
   end
+
+  describe "GET #download" do
+    context "when file exists and is attached" do
+      let(:success_response) do
+        {
+          status: :success,
+          data: file.file.download,
+          filename: file.name,
+          content_type: file.content_type
+        }
+      end
+
+      before do
+        allow_any_instance_of(FileDownloadService).to receive(:call).and_return(success_response)
+        get :download, params: { folder_id: folder.uid, id: file.uid }
+      end
+
+      it "returns http success" do
+        expect(response).to have_http_status(:success)
+      end
+
+      it "sends the file with correct headers" do
+        expect(response.headers["Content-Type"]).to eq(file.content_type)
+        expect(response.headers["Content-Disposition"]).to include(file.name)
+      end
+    end
+
+    context "when file is not available" do
+      let(:error_response) do
+        {
+          status: :error,
+          message: "File is no longer available"
+        }
+      end
+
+      before do
+        allow_any_instance_of(FileDownloadService).to receive(:call).and_return(error_response)
+        get :download, params: { folder_id: folder.uid, id: file.uid }
+      end
+
+      it "redirects to folder with not found status" do
+        expect(response.status).to eq(404)
+      end
+
+      it "sets flash alert" do
+        expect(flash[:alert]).to eq("File is no longer available")
+      end
+    end
+
+    context "when file entry is not found" do
+      it "raises ActiveRecord::RecordNotFound" do
+        expect {
+          get :download, params: { folder_id: folder.uid, id: "invalid" }
+        }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+    end
+
+    context "when folder is not found" do
+      it "raises ActiveRecord::RecordNotFound" do
+        expect {
+          get :download, params: { folder_id: "invalid", id: file.uid }
+        }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+    end
+  end
 end
