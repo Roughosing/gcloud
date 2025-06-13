@@ -51,7 +51,6 @@ GCloud (Greg's Cloud) is a Ruby on Rails application that provides secure, user-
 2. Install dependencies:
    ```bash
    bundle install
-   yarn install
    ```
 
 3. Setup database:
@@ -61,7 +60,7 @@ GCloud (Greg's Cloud) is a Ruby on Rails application that provides secure, user-
 
 4. Start the server:
    ```bash
-   bin/dev
+   ./bin/dev
    ```
 
 The application will be available at `http://localhost:3000`
@@ -77,7 +76,6 @@ bundle exec rspec
 The test suite includes:
 - Model specs with thorough validation and callback testing
 - Controller specs for action verification
-- System tests for end-to-end functionality
 - Helper specs for view helpers
 
 ## Architecture
